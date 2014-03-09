@@ -49,10 +49,10 @@ $vals['db_pass'] = "root";
 $vals['db_host'] = "localhost";
 $vals['db_name'] = "test";
 
-$vals['db_user'] = "sumit_root";
-$vals['db_pass'] = "Ark510@123";
+$vals['db_user'] = "dbUser";
+$vals['db_pass'] = "passwd";
 $vals['db_host'] = "localhost";
-$vals['db_name'] = "sumitk_zthinker";
+$vals['db_name'] = "dnName";
 
 $script_path = "my.sql";
 
