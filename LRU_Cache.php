@@ -54,8 +54,16 @@ for ($i = 0; $i < $totalCommands; $i++) {
             break;
 
         case "DUMP":
-
-			break;
+            if (empty($cache) || empty($cacheSize)) {
+                //echo "\nNULL";
+            } else {
+                $tempCache = $cache;
+                ksort($tempCache);
+                foreach ($tempCache as $key => $value) {
+                    echo  "\n$key $value";
+                }
+            }
+            break;
 
         default:
             break;
