@@ -6,11 +6,11 @@ $file       = fopen('input00.txt', 'r');
 $totalCommands = fgets($file);
 $totalCommands = preg_replace('~[\r\n]+~', '', $totalCommands);
 
-
+/*
 if ($totalCommands > MAX_LINES) {
     $totalCommands = MAX_LINES;
 }
-
+*/
 $cacheSize = 0;
 $cache     = array ();
 
@@ -39,6 +39,17 @@ for ($i = 0; $i < $totalCommands; $i++) {
     switch ($command) {
 
         case "BOUND":
+            $cacheSize = $key;
+            if (empty($cacheSize)) {
+                $cache = array();
+                continue;
+            }
+            if ($cacheSize < count($cache)) {
+                $shift = count($cache) - $cacheSize;
+                for ($i = 0; $i < $shift; $i++) {
+                    array_shift($cache);
+                }
+            }
             break;
 
         case "SET":                
@@ -52,8 +63,9 @@ for ($i = 0; $i < $totalCommands; $i++) {
                 elseif ($cacheSize == count($cache)) {   
                     array_shift($cache);
                     $cache[$key] = $value;
-                }              
+                }                
             }
+        
             break;
 
         case "GET":
@@ -76,8 +88,7 @@ for ($i = 0; $i < $totalCommands; $i++) {
             }
             break;
 
-        case "DUMP":
-            if (empty($cache) || empty($cacheSize)) {
+        case "DUMP":            if (empty($cache) || empty($cacheSize)) {
                 //echo "\nNULL";
             } else {
                 $tempCache = $cache;
