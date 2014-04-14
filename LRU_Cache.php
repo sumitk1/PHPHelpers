@@ -88,7 +88,8 @@ for ($i = 0; $i < $totalCommands; $i++) {
             }
             break;
 
-        case "DUMP":            if (empty($cache) || empty($cacheSize)) {
+        case "DUMP":
+            if (empty($cache) || empty($cacheSize)) {
                 //echo "\nNULL";
             } else {
                 $tempCache = $cache;
