@@ -51,6 +51,12 @@ for ($i = 0; $i < $totalCommands; $i++) {
 
         case "PEEK":
 
+            if (array_key_exists($key, $cache)) {
+                $value = $cache[$key];
+                echo "\n" . $value;
+            } else {
+                echo "\nNULL";
+            }
             break;
 
         case "DUMP":
