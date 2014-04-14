@@ -41,16 +41,33 @@ for ($i = 0; $i < $totalCommands; $i++) {
         case "BOUND":
             break;
 
-        case "SET":
-                
+        case "SET":                
+            if (array_key_exists($key, $cache)) {
+                unset ($cache[$key]);
+                $cache[$key] = $value;
+            } else {
+                if ($cacheSize > count($cache)) { 
+                    $cache[$key] = $value;  
+                }
+                elseif ($cacheSize == count($cache)) {   
+                    array_shift($cache);
+                    $cache[$key] = $value;
+                }              
+            }
             break;
 
         case "GET":
-
+            if (array_key_exists($key, $cache)) {
+                $value = $cache[$key];
+                echo "\n" . $value;
+                unset ($cache[$key]);
+                $cache[$key] = $value;
+            } else {
+                echo "\nNULL";
+            }
             break;
 
         case "PEEK":
-
             if (array_key_exists($key, $cache)) {
                 $value = $cache[$key];
                 echo "\n" . $value;
