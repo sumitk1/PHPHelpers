@@ -128,7 +128,7 @@ class CircularLinkedList {
         $list  = $this->first;
         $count = $this->count;
         while ($count > 0) {
-            echo " " . $list->data . " ";
+            echo " " . $list->data;
             $list = $list->link;
             $count--;
         }
@@ -172,7 +172,8 @@ for ($i = 0; $i < $count; $i++) {
 // The operation below makes it point to the first node
 $circularLinkedList->getNext();
 
-echo "<br/>";
+echo "Initial List: ";
+$circularLinkedList->printList();
 
 while ($count != 1 && $count > 0) {
     $data = $circularLinkedList->getCurrent()->data;
@@ -208,7 +209,8 @@ while ($count != 1 && $count > 0) {
 
 }
 
+echo "\nFinal List: ";
 $circularLinkedList->printList();
-echo "<br/>The position of the survivor is = " . $circularLinkedList->findSurvivorPosition();
+echo "\n\nThe position of the survivor is = " . $circularLinkedList->findSurvivorPosition();
 
 ?>
